@@ -1,0 +1,15 @@
+https://medium.com/@alexppppp/how-to-train-a-custom-keypoint-detection-model-with-pytorch-d9af90e111da
+https://github.com/alexppppp/keypoint_rcnn_training_pytorch
+
+Dataset description:
+
+Each object (glue tube) is described with it's bounding box and two keypoints. 
+
+Annotations for each image contain:
+- coordinates of bounding boxes (each object has a bounding box, which is described with top left and bottom right corners in [x1, y1, x2, y2] format);
+- coordinates of keypoints (each object has 2 keypoints, which are described in [x, y, visibility] format).
+
+In this dataset all keypoints are visible (i.e. visibility=1).
+
+First keypoint - head
+Second keypoint - tail
