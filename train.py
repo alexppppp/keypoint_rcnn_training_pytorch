@@ -154,7 +154,7 @@ def main(args):
         utils.mkdir(args.output_dir)
 
     utils.init_distributed_mode(args)
-    print(args)
+    # print(args)
 
     device = torch.device(args.device)
 
