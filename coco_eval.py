@@ -19,9 +19,10 @@ class CocoEvaluator:
         self.iou_types = iou_types
         self.coco_eval = {}
         for iou_type in iou_types:
-            #self.coco_eval[iou_type] = COCOeval(coco_gt, iouType=iou_type)
+            # self.coco_eval[iou_type] = COCOeval(coco_gt, iouType=iou_type)
             coco_eval = COCOeval(coco_gt, iouType=iou_type)
             coco_eval.params.kpt_oks_sigmas = np.array([.26, .25, .25, .35, .35, .79]) / 10.0
+            # coco_eval.params.kpt_oks_sigmas = np.array([.3, .3, .3, .3, .3, .3]) / 10.0
             self.coco_eval[iou_type] = coco_eval
 
         self.img_ids = []
@@ -45,7 +46,7 @@ class CocoEvaluator:
 
     def synchronize_between_processes(self):
         for iou_type in self.iou_types:
-            print(self.eval_imgs[iou_type])
+            # print(self.eval_imgs[iou_type])
             self.eval_imgs[iou_type] = np.concatenate(self.eval_imgs[iou_type], 2)
             create_common_coco_eval(self.coco_eval[iou_type], self.img_ids, self.eval_imgs[iou_type])
 
@@ -56,7 +57,7 @@ class CocoEvaluator:
     def summarize(self):
         for iou_type, coco_eval in self.coco_eval.items():
             print(f"IoU metric: {iou_type}")
-            coco_eval.summarize()
+            # coco_eval.summarize()
 
     def prepare(self, predictions, iou_type):
         if iou_type == "bbox":
